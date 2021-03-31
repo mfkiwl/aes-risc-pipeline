@@ -7,10 +7,7 @@ $\RVXLEN = 32$
 and adopts a 
 column-packed 
 representation of state and round key matrices.
-
 As detailed in
-\REFFIG{fig:v1:mnemonics}
-and
 \REFFIG{fig:v1:pseudo},
 \ISE{1}
 adds
@@ -30,7 +27,7 @@ the instruction format for
 \VERB{saes.v1.encs}
 and
 \VERB{saes.v1.encm}
-includes $1$ source and $1$ destination register address.
+specifies $1$ source and $1$ destination register.
 Since 
 \VERB{saes.v1.encs}
 requires $4$ applications of the S-box, a trade-off between latency and

@@ -1,11 +1,11 @@
 % =============================================================================
 
-Although differing in nature, both AES and RISC-V represent important
-standards.  In this paper, we have addressed the challenge of secure, 
-efficient implementation of AES on RISC-V: our approach harnesses the
-modularity afforded by RISC-V, through a focus on the use of ISEs.
+%Although differing in nature, both AES and RISC-V represent important
+%standards.  In this paper, we have addressed the challenge of secure, 
+%efficient implementation of AES on RISC-V: our approach harnesses the
+%modularity afforded by RISC-V, through a focus on the use of ISEs.
 
-Specifically, and motivated by ongoing efforts to standardise support 
+Motivated by ongoing efforts to standardise support 
 for AES in RISC-V, we have implemented and evaluated five ISE designs 
 on two different RISC-V compliant base micro-architectures.
 Our conclusion is that
@@ -21,9 +21,19 @@ Our conclusion is that
    B~\cite[Section 17]{RV:ISA:I:19}
    extension
    can combine with either option to support AES-GCM.
-Furthermore, we demonstrated that, with reasonable alterations to the
-base micro-architecture, our implementation of \ISE{3} can be hardened
-(via masking) to prevent $1$st order DPA-style attacks.
+
+Our evaluations of the different ISEs have focused primarily on
+performance, code size and hardware cost metrics.
+Because our work is a departure from historic
+AES ISEs in that they are designed to be suitable for small, embedded
+CPU cores, power and EM side-channel security will likely be a consideration
+for implementations of these ISEs.
+We consider side-channel secure ISE design to be an
+open problem, particularly in terms of making the same code portably
+side-channel secure across multiple implementations of the same ISE.
+Future efforts would be well spent in studying this problem, perhaps
+looking at creating custom extensions based on the recommendations here
+to support side-channel security.
 
 % TODO: maybe try to add some insight into ISA design constraints ...
 %

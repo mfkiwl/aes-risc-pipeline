@@ -11,7 +11,7 @@ As a block cipher, AES defines two algorithms
 \ALG{Dec} &:& \SET{ 0, 1 }^{8 \cdot 4 \cdot Nk} \times \SET{ 0, 1 }^{8 \cdot 4 \cdot Nb} \rightarrow \SET{ 0, 1 }^{8 \cdot 4 \cdot Nb} \\
 \end{array}
 \]
-st.
+such that
 $
 m = \ALG{Dec}( k, c = \ALG{Enc}( k, m ) ) .
 $
@@ -59,7 +59,7 @@ $Nr$ dictates the number of rounds.  The standard AES parameter sets are
 \mbox{AES-256} &\mapsto& \TUPLE{ 8, 4, 14 } \\
 \end{array}
 \]
-st. the number of bits in a plaintext (resp. ciphertext) block is fixed to 
+such that the number of bits in a plaintext (resp. ciphertext) block is fixed to 
 $
 8 \cdot 4 \cdot Nb = 128 .
 $
@@ -71,8 +71,8 @@ use the terms AES and AES-128 synonymously.
 
 \paragraph{Design.}
 
-AES is based on some underpinning Mathematics~\cite[Section 4]{FIPS:197},
-and, in particular, can be defined in terms of 
+The mathematics underpinning AES are described in ~\cite[Section 4]{FIPS:197}.
+In particular, it can be defined in terms of 
 operations in the finite field $\F_{2^{  8}}$ constructed as
 $
 \F_{2}[\IND{x}] / ( \IND{x}^{8} + \IND{x}^{4} + \IND{x}^{3} + \IND{x} + 1 ) .
@@ -103,7 +103,6 @@ and
 $\AESRND{rk}{r}_{i,j}$
 respectively, with super- and/or subscripts omitted whenever irrelevant.
 
-At a high(er) level, 
 AES is an iterative block cipher, based on a substitution-permutation network.
 This means encryption using AES can be described~\cite[Section 5.2]{FIPS:197}
 as follows:
@@ -229,4 +228,3 @@ $
 respectively, where, because \AESFUNC{ShiftRows} and \AESFUNC{SubBytes}
 commute, the order they are applied in can be selected to suit.
 
- =============================================================================

@@ -40,18 +40,20 @@ Symbiotic EDA \\ \email{claire@symbioticeda.com}
 \maketitle
 
 \begin{abstract}
-Secure, efficient execution of AES is an essential requirement for most
+Secure, efficient execution of AES is an essential requirement on most
 computing platforms. Dedicated
 Instruction Set Extensions (ISEs) are often included for this purpose.
 RISC-V is a (relatively) new ISA that lacks such a standardised ISE.
 We survey the state-of-the-art industrial and academic ISEs for AES,
-implement and evaluate five different ISEs, one of which is novel,
-and make recommendations for standardisation.
-% NOTE: Commented out as SCA section not likely to be included in final version.
-%We consider the side-channel security implications of the ISE designs,
-%demonstrating how an implementation of one candidate ISE can be hardened
-%against DPA-style attacks.
-We also explore how the proposed standard Bit-manipulation extension
+implement and evaluate five different ISEs, one of which is novel.
+We recommend separate ISEs for 32 and 64-bit base architectures, with
+measured performance improvements for an AES-128 block encryption of
+$4\times$ 
+and
+$10\times$
+with a hardware cost of $1.1K$ and $8.2K$ gates respectively,
+when compared to a software-only implementation based on use of T-tables.
+We also explore how the proposed standard bit-manipulation extension
 to RISC-V can be harnessed for efficient implementation of AES-GCM.
 Our work supports the ongoing RISC-V cryptography extension standardisation
 process.
@@ -70,17 +72,11 @@ process.
 \section{Background}
 \label{sec:bg}
 
-FIPS-197~\cite{FIPS:197} represents the definitive specification
-of AES. 
-An overview of related design rationale is offered in ~\cite{DaeRij:02}.
-We endeavour to follow the notation set out in ~\cite{FIPS:197}
-in referencing specific parts of AES functionality.
-
 % -----------------------------------------------------------------------------
 
-%\subsection{AES specification}
-%\label{sec:bg:aes_spec}
-%\input{tex/bg-aes_spec.tex}
+\subsection{AES specification}
+\label{sec:bg:aes_spec}
+\input{tex/bg-aes_spec.tex}
 
 \subsection{AES implementation}
 \label{sec:bg:aes_impl}
@@ -130,6 +126,9 @@ in referencing specific parts of AES functionality.
 \label{sec:ise:design:v5}
 \input{tex/body-ise_design_v5.tex}
 
+%\input{tex/datapaths.tex}
+\input{tex/body-ise_pseudo.tex}
+
 % -----------------------------------------------------------------------------
 
 \subsection{Implementation}
@@ -140,16 +139,6 @@ in referencing specific parts of AES functionality.
 
 \subsection{Evaluation}
 
-\paragraph{Hardware}
-\label{sec:ise:eval:hw}
-\input{tex/body-ise_eval_hw.tex}
-
-\paragraph{Software}
-\label{sec:ise:eval:sw}
-\input{tex/body-ise_eval_sw.tex}
-
-\paragraph{Discussion}
-\label{sec:ise:eval:discuss}
 \input{tex/body-ise_eval_discuss.tex}
 
 % =============================================================================
@@ -177,20 +166,20 @@ in referencing specific parts of AES functionality.
 \ifbool{anonymous}{}{%
 \section*{Acknowledgements}
 
+We would like to thank the reviewers for their helpful and 
+constructive comments.
+
 This work was undertaken as part of the ongoing standardisation of
 RISC-V. We are grateful to all members of
 the Cryptographic Extensions Task Group
 who contributed to related discussions, particularly Andy Glew and
 Barry Spinney.
-The opinions expressed in this paper are the author's alone, not
+The opinions expressed in this paper are the authors' alone, not
 of their respective employers or RISC-V International.
 The RISC-V cryptography extension is in the process of being standardised
 at the time of writing. The purpose of this work is to support that process.
 
-We would like to thank the anonymous reviewers for their helpful and 
-constructive comments.
-
-This work has been supported in part by
+The first and third authors were supported in part by
 EPSRC via grant EP/R012288/1, under the
 RISE (\url{http://www.ukrise.org}) programme
 and
@@ -207,34 +196,13 @@ Innovate UK Project 105747.
 \appendix
 
 \clearpage
-\section{\ISE{1}:       additional technical detail}
-\label{sec:pseudo:v1}
-\input{tex/appx-design_v1.tex}
+\section{Example AES round function implementations}
+\label{sec:round-functions}
+\input{tex/appx-round-functions.tex}
 \clearpage
-\section{\ISE{2}:       additional technical detail}
-\label{sec:pseudo:v2}
-\input{tex/appx-design_v2.tex}
-\clearpage
-\section{\ISE{3}:       additional technical detail}
-\label{sec:pseudo:v3}
-\input{tex/appx-design_v3.tex}
-\clearpage
-\section{\ISE{4}:       additional technical detail}
-\label{sec:pseudo:v4}
-\input{tex/appx-design_v4.tex}
-\clearpage
-\section{\ISE{5}:       additional technical detail}
-\label{sec:pseudo:v5}
-\input{tex/appx-design_v5.tex}
-
-\clearpage
-\section{\mbox{\CORE{2}} core: additional technical detail}
-\label{sec:core:2}
-\input{tex/appx-core_2.tex}
-\clearpage
-\section{\mbox{\CORE{1}} core: additional technical detail}
-\label{sec:core:1}
-\input{tex/appx-core_1.tex}
+\section{Additional technical detail for CPU cores}
+\label{sec:cores}
+\input{tex/appx-cores.tex}
 
 %\clearpage
 %\section{Additional algorithms}

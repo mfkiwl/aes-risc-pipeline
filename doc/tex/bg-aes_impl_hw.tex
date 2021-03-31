@@ -5,10 +5,7 @@ execution of
 AES
 is 
 performed by 
-a dedicated hardware module (e.g., a memory-mapped co-processor),
-while
-the software which uses AES is executed on
-a general-purpose CPU core.
+a dedicated hardware module (e.g., a memory-mapped co-processor).
 A large design space exists for hardware implementations of AES.
 Gaj and Chodowiec~\cite[Section 3.3]{GajCho:00}
 give an overview, detailing
@@ -21,14 +18,14 @@ survey concrete implementations on a variety of fabrics including FPGAs
 and ASICs.
 
 Although hardware-only designs are not our focus, the associated techniques
-inform ISE-related design choices.
+can guide ISE-related design choices.
 First,
-they inform the ISE interface.
+they guide the ISE interface.
 For example, some ISEs can be characterised as offering an interface to
 hardware constituting one round 
 (i.e., aligned with an iterative hardware implementation).
 Second,
-they inform the ISE implementation.
+they guide the ISE implementation.
 For example, a significant body of work focuses on efficient hardware 
 implementation of the S-box: ~\cite{Canright:05,BoyPer:12,ReyTahAsh:18}.
 
